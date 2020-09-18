@@ -3,8 +3,9 @@ package com.example.samplehiltapp.data.repository
 import com.example.samplehiltapp.data.local.CharacterDao
 import com.example.samplehiltapp.data.remote.CharacterRemoteDataSource
 import com.example.samplehiltapp.util.performGetOperation
+import javax.inject.Inject
 
-class CharacterRepository constructor(
+class CharacterRepository @Inject constructor(
     private val remoteDataSource: CharacterRemoteDataSource,
     private val localDataSource: CharacterDao
 ) {
