@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
+import com.example.samplehiltapp.data.entities.Character
 import com.example.samplehiltapp.data.repository.CharacterRepository
 import com.example.samplehiltapp.util.Resource
-import com.example.samplehiltapp.data.entities.Character
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CharacterDetailViewModel constructor(
+@HiltViewModel
+class CharacterDetailViewModel @Inject constructor(
     private val repository: CharacterRepository
 ) : ViewModel() {
 
@@ -23,5 +26,4 @@ class CharacterDetailViewModel constructor(
     fun start(id: Int) {
         _id.value = id
     }
-
 }

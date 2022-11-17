@@ -10,17 +10,19 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.samplehiltapp.R
-import com.example.samplehiltapp.SampleApplication
-import com.example.samplehiltapp.util.Resource
 import com.example.samplehiltapp.data.entities.Character
+import com.example.samplehiltapp.util.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterDetailFragment : Fragment(){
 
-    private lateinit var viewModel: CharacterDetailViewModel
+    private val viewModel: CharacterDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,12 +30,6 @@ class CharacterDetailFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.character_detail_fragment, container, false)
-
-        val appContainer = SampleApplication.appContainer()
-
-        if (appContainer != null) {
-            viewModel = CharacterDetailViewModel(appContainer.userRepository)
-        }
 
         return view
     }
