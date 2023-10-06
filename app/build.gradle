@@ -6,10 +6,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion "30.0.3"
-
     defaultConfig {
+        compileSdk 34
         applicationId "com.example.samplehiltapp"
         minSdkVersion 22
         targetSdkVersion 34
@@ -29,6 +27,10 @@ android {
             dataBinding = true
             // for view binding :
             viewBinding = true
+            compose  = true
+        }
+        composeOptions {
+            kotlinCompilerExtensionVersion = "1.5.1"
         }
     }
 
@@ -84,6 +86,7 @@ dependencies {
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
@@ -95,6 +98,14 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    // Compose
+    implementation  "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
 
 }
 
