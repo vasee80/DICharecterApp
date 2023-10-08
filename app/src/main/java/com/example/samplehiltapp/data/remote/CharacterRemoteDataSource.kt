@@ -1,6 +1,9 @@
 package com.example.samplehiltapp.data.remote
 
-class CharacterRemoteDataSource constructor(private val characterService: CharacterService): BaseDataSource() {
+import javax.inject.Inject
+
+class CharacterRemoteDataSource @Inject constructor(private val characterService: CharacterService) :
+    BaseDataSource() {
     suspend fun getCharacters() = getResult { characterService.getAllCharacters() }
-    suspend fun getCharacter(id : Int) = getResult { characterService.getCharacter(id) }
+    suspend fun getCharacter(id: Int) = getResult { characterService.getCharacter(id) }
 }
